@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#ffffff" id="meta-theme-color" />
+  <title>HanzMod</title>
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Icons -->
+  <link rel="icon" id="favicon" type="image/png" sizes="32x32" href="/logo.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
+  <link rel="shortcut icon" href="/logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
+
+  <!-- iOS PWA support -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="HanzMod" />
+
+  <meta property="og:title" content="HanzMod" />
+  <meta property="og:image" content="/logo.png" />
+</head>
+<body class="bg-gray-100 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300 antialiased h-[100dvh] w-screen overflow-hidden flex justify-center">
+  <div id="app" class="w-full max-w-md bg-white dark:bg-gray-900 h-full shadow-2xl flex flex-col relative overflow-hidden transition-colors duration-300">
+    
+    <!-- Header -->
+    <header id="header" class="shrink-0 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-100 dark:border-gray-800 p-4 flex justify-between items-center transition-colors duration-300">
+        <div class="flex items-center gap-3" id="header-left">
+           <!-- Dynamic Header Title/Back Button -->
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="theme-toggle" class="p-2 rounded-full bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition active:scale-95">
+              <!-- Icon injected -->
+          </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 overflow-y-auto w-full scroll-smooth transition-colors duration-300">
+        <!-- Content injected here -->
+    </main>
+
+    <!-- Bottom Nav -->
+    <nav id="bottom-nav" class="shrink-0 z-50 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300 pb-safe">
+        <div class="flex justify-around items-center px-2 py-2">
+            <button onclick="window.router.navigate('home')" class="nav-btn p-2 flex flex-col items-center text-gray-400 hover:text-green-500 dark:hover:text-green-400 transition" data-target="home">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                <span class="text-[10px] font-semibold tracking-wide">Home</span>
+            </button>
+            <button onclick="window.router.navigate('search')" class="nav-btn p-2 flex flex-col items-center text-gray-400 hover:text-green-500 dark:hover:text-green-400 transition" data-target="search">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <span class="text-[10px] font-semibold tracking-wide">Search</span>
+            </button>
+            <button onclick="window.router.navigate('info')" class="nav-btn p-2 flex flex-col items-center text-gray-400 hover:text-green-500 dark:hover:text-green-400 transition" data-target="info">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span class="text-[10px] font-semibold tracking-wide">Info</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Custom PWA Install Popup -->
+    <div id="install-popup" class="hidden absolute inset-x-0 bottom-0 z-[90] p-4 pb-6">
+      <div class="absolute inset-0 bg-black/30" id="install-popup-backdrop"></div>
+      <div class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-800 p-5 flex items-start gap-4">
+        <img src="/logo.png" class="w-14 h-14 rounded-2xl shadow-sm shrink-0" alt="HanzMod" />
+        <div class="flex-1 min-w-0">
+          <h3 class="font-bold text-gray-900 dark:text-white">Install HanzMod</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mt-0.5 leading-snug">Pasang di layar utama untuk akses lebih cepat dan pengalaman seperti aplikasi native.</p>
+          <div class="flex gap-2 mt-3">
+            <button id="install-popup-btn" class="px-4 py-2 rounded-xl bg-green-500 text-white text-sm font-semibold active:scale-95 transition hover:bg-green-600">Install</button>
+            <button id="install-popup-dismiss" class="px-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-sm font-semibold active:scale-95 transition">Nanti saja</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
