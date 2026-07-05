@@ -1,4 +1,4 @@
-# ModKita — Panduan Deploy Netlify & Catatan PWA
+# HanzMod — Panduan Deploy Netlify & Catatan PWA
 
 ## 1. Cara deploy ke Netlify
 
